@@ -47,6 +47,7 @@ class App extends Component {
     //const body = await response.json();
     //return body;
     try {
+      //const axios = require('axios');
       const response = await axios.get('/api/customers');
       this.setState({
         customers: response.data
@@ -85,7 +86,7 @@ class App extends Component {
                   id={c.id}
                   image={c.image}
                   name={c.name}
-                  birthday={c.gender}
+                  birthday={c.birthday}
                   gender={c.gender}
                   job={c.job}/>
               )
