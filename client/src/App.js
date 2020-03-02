@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { ReactComponent as logo } from './logo.svg';
-import Customer from './components/Customer'
+import Customer from './components/Customer';
+import CustomerAdd from './components/CustomerAdd';
 import './App.css';
-import axios from 'axios';
+import { get } from 'axios';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
@@ -48,7 +49,7 @@ class App extends Component {
     //return body;
     try {
       //const axios = require('axios');
-      const response = await axios.get('/api/customers');
+      const response = await get('/api/customers');
       this.setState({
         customers: response.data
       });
@@ -65,6 +66,7 @@ class App extends Component {
   render() {
     const { classes } = this.props;
     return (
+      <div>
       <Paper className={classes.root}>
         <Table className={classes.table}>
           <TableHead>
@@ -100,6 +102,8 @@ class App extends Component {
           </TableBody>
         </Table>
       </Paper>
+      <CustomerAdd/>
+      </div>
     );
   }
 }
